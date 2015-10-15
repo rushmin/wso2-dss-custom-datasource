@@ -1,4 +1,4 @@
-<data disableStreaming="true" name="EmployerDataService">
+<data disableStreaming="true" name="EmployeeDataService">
     <config id="EmployerDS">
         <property name="custom_query_datasource_class">org.wso2.dss.custom.er.ds.EmployeeDS</property>
         <property name="employer_ds_sample_data">E001,John,45,IT;E002,Alan,42,FINANCE;E003,Paul,40,HR;E004,Anne,38,ADMIN;E005,Bill,36,IT</property>

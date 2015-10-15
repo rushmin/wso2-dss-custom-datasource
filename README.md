@@ -12,6 +12,10 @@ A mock legacy database which has a Java API
 
 The custom data source implementation which connects to the employee-repo
 
+####Requirements
+
+WSO2 DSS 3.2.2 
+
 
 ####How to deploy the sample
 
@@ -36,7 +40,7 @@ Above data service has two operations
 The following cURL command fetches the employee with the id 'E001'
 
 ```
-curl -H "Accept: application/json" http://localhost:9763/services/EmployerDataService.HTTPEndpoint/employer/E001
+curl -H "Accept: application/json" http://localhost:9763/services/EmployeeDataService.HTTPEndpoint/employer/E001
 ```
 
 
@@ -45,5 +49,5 @@ curl -H "Accept: application/json" http://localhost:9763/services/EmployerDataSe
 The following cURL command fetches the employee who is below 40
 
 ```
-curl -H "Accept: application/json" http://localhost:9763/services/EmployerDataService.HTTPEndpoint/employer/age/40
+curl -H "Accept: application/json" http://localhost:9763/services/EmployeeDataService.HTTPEndpoint/employer/age/40
 ```

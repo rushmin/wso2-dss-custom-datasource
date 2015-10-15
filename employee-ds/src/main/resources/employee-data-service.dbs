@@ -1,0 +1,26 @@
+<data disableStreaming="true" name="EmployerDataService">
+    <config id="EmployerDS">
+        <property name="custom_query_datasource_class">org.wso2.dss.custom.er.ds.EmployeeDS</property>
+        <property name="employer_ds_sample_data">E001,John,45,IT;E002,Alan,42,FINANCE;E003,Paul,40,HR;E004,Anne,38,ADMIN;E005,Bill,36,IT</property>
+    </config>
+    <query id="getEmployerById" useConfig="EmployerDS">
+        <expression>id,name,age,team;id=:id</expression>
+        <result outputType="json">{"employees":{"employee":[{"id":"$id", "name":"$name","age":"$age","team":"$team"}]}}</result>
+        <param name="id" sqlType="STRING"/>
+    </query>
+    <query id="getEmployerByAge" useConfig="EmployerDS">
+        <expression>id,name,age,team;age&lt;:age</expression>
+        <result outputType="json">{"employees":{"employee":[{"id":"$id", "name":"$name","age":"$age","team":"$team"}]}}</result>
+        <param name="age" sqlType="INTEGER"/>
+    </query>
+    <resource path="employer/{id}" method="GET">
+        <call-query href="getEmployerById">
+            <with-param name="id" query-param="id"/>
+        </call-query>
+    </resource>
+    <resource path="employer/age/{age}" method="GET">
+        <call-query href="getEmployerByAge">
+            <with-param name="age" query-param="age"/>
+        </call-query>
+    </resource>
+</data>

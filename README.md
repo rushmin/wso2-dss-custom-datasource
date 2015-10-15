@@ -12,9 +12,15 @@ A mock legacy database which has a Java API
 
 The custom data source implementation which connects to the employee-repo
 
+This data source implementation introduces a query language to query the legacy database.
+
+e.g.
+* query : name,age;id=E001
+* explanation : give me the name and the age of the employee whose id is E0001
+
 ####Requirements
 
-WSO2 DSS 3.2.2 
+WSO2 DSS 3.2.2
 
 
 ####How to deploy the sample

@@ -19,8 +19,8 @@ public class EmployeeDS implements CustomQueryBasedDS {
     private EmployeeRepository employeeRepository;
 
     public void init(Map<String, String> props) throws DataServiceFault {
-        employeeRepository = EmployeeRepository.getEmployeeRepository();
-        employeeRepository.populateSampleData();
+        employeeRepository = new EmployeeRepository();
+        populateRepository();
     }
 
     public void close() {
@@ -106,6 +106,14 @@ public class EmployeeDS implements CustomQueryBasedDS {
             return new FixedDataRow(rowData);
         }
 
+    }
+
+    private void populateRepository() {
+        employeeRepository.add(new Employee("E001", "John", 45, "IT"));
+        employeeRepository.add(new Employee("E002", "Alan", 42, "IT"));
+        employeeRepository.add(new Employee("E003", "Paul", 40, "IT"));
+        employeeRepository.add(new Employee("E004", "Anne", 38, "IT"));
+        employeeRepository.add(new Employee("E005", "Bill", 36, "IT"));
     }
 
 }

@@ -12,7 +12,7 @@ public class EmployeeRepositoryTest {
     @Test
     public void testQuery() throws Exception {
 
-        EmployeeRepository employeeRepository = EmployeeRepository.getEmployeeRepository();
+        EmployeeRepository employeeRepository = new EmployeeRepository();
         populateRepository(employeeRepository);
 
         List<Employee> result = employeeRepository.query("age<40");
@@ -32,7 +32,7 @@ public class EmployeeRepositoryTest {
     @Test(expected = UnsupportedOperationException.class)
     public void testQueryForUnsupportedOperations1() throws Exception {
 
-        EmployeeRepository employeeRepository = EmployeeRepository.getEmployeeRepository();
+        EmployeeRepository employeeRepository = new EmployeeRepository();
         populateRepository(employeeRepository);
 
         employeeRepository.query("age=40");
@@ -41,7 +41,7 @@ public class EmployeeRepositoryTest {
     @Test(expected = UnsupportedOperationException.class)
     public void testQueryForUnsupportedOperations2() throws Exception {
 
-        EmployeeRepository employeeRepository = EmployeeRepository.getEmployeeRepository();
+        EmployeeRepository employeeRepository = new EmployeeRepository();
         populateRepository(employeeRepository);
 
         employeeRepository.query("name<20");

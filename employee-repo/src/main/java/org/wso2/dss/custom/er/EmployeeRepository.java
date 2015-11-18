@@ -7,26 +7,14 @@ import java.util.regex.Pattern;
 
 public class EmployeeRepository {
 
-    private static EmployeeRepository employerRepository;
+    private List<Employee> employees;
 
-    private List<Employee> employers;
-
-    private EmployeeRepository() {
-        employers = new ArrayList<Employee>();
+    public EmployeeRepository() {
+        employees = new ArrayList<Employee>();
     }
 
-    public static EmployeeRepository getEmployeeRepository() {
-
-        if(employerRepository == null){
-            employerRepository = new EmployeeRepository();
-        }
-
-        return employerRepository;
-
-    }
-
-    public void add(Employee employer){
-        employers.add(employer);
+    public void add(Employee employee){
+        employees.add(employee);
     }
 
     public List<Employee> query(String query){
@@ -43,15 +31,15 @@ public class EmployeeRepository {
 
             // Only supports age<:x and id=:x type expressions.
             if("age".equals(conditionVariable) && "<".equals(conditionOperator)){
-                for(Employee employer : employers){
-                    if(employer.getAge() <  Integer.parseInt(conditionValue)){
-                        results.add(employer);
+                for(Employee employee : employees){
+                    if(employee.getAge() <  Integer.parseInt(conditionValue)){
+                        results.add(employee);
                     }
                 }
             }else if("id".equals(conditionVariable) && "=".equals(conditionOperator)){
-                for(Employee employer : employers){
-                    if(employer.getId().equals(conditionValue)){
-                        results.add(employer);
+                for(Employee employee : employees){
+                    if(employee.getId().equals(conditionValue)){
+                        results.add(employee);
                         break;
                     }
                 }
@@ -80,5 +68,9 @@ public class EmployeeRepository {
 
     public void populateSampleData() {
         populate("E001,John,45,IT;E002,Alan,42,FINANCE;E003,Paul,40,HR;E004,Anne,38,ADMIN;E005,Bill,36,IT");
+    }
+
+    public void clear() {
+        employees.clear();
     }
 }
